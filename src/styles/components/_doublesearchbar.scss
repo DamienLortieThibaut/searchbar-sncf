@@ -1,0 +1,61 @@
+.doublesearchbar {
+  .container {
+    padding: 7rem;
+    @media (max-width: 765px) {
+      padding: 1rem;
+    }
+    .space{
+        height: 9vh;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      max-width: 57%;
+      @media (max-width: 765px) {
+        max-width: 100%;
+      }
+      .departure {
+        border-radius: 0.875rem 0.875rem 0 0;
+      }
+      .arrival {
+        border-radius: 0 0 0.875rem 0.875rem;
+      }
+      .searchbar {
+        cursor: text;
+        display: inline-flex;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 0 4.5rem 0 1rem;
+        position: relative;
+        width: 100%;
+        margin: 0.1rem;
+        font-size: 1rem;
+        line-height: 1.375rem;
+        font-weight: 500;
+        background-color: white;
+        border: 1px solid transparent;
+        color: $black;
+        height: 3rem;
+        &:hover {
+          background: $grey;
+        }
+        &:focus-within {
+          border-color: rgb(18, 121, 150);
+          box-shadow: rgb(18, 121, 150) 0px 0px 0px 1px inset;
+        }
+        label {
+          max-height: 2em;
+        }
+        input {
+          background: none;
+          border: 0px;
+          outline: none;
+          line-height: 1.375rem;
+          font-size: 1rem;
+          padding-left: 0.4rem;
+        }
+      }
+    }
+  }
+}

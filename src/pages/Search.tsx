@@ -1,35 +1,14 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
-type Suggestion = {
-    "id": number,
-    "unique_name": string,
-    "local_name": string,
-    "latitude": number,
-    "longitude": number,
-    "new_id": string,
-    "city_id": number,
-    "gpuid": string,
-    "nb_search": string,
-    "popular": boolean,
-    "iscity": boolean
-}
+import React from "react";
+import { useParams } from "react-router-dom";
+import DoubleSearchBar from "../components/DoubleSearchBar";
 
 const Search = () => {
-    const [suggestions, setSuggestion] = useState<Suggestion[]>([]);
-
-    useEffect(() => {
-        axios.get("https://api.comparatrip.eu/cities/popular/5").then((res) => setSuggestion(res.data))
-    }, []);
-
-    return (
-        <div>
-            <ul>
-                {suggestions.map(suggestion => <li>{ suggestion.local_name}</li>
-                )}
-            </ul>
-        </div>
-    );
+  const { city } = useParams<{ city: string }>();
+  return (
+    <div>
+      <DoubleSearchBar city={city} />
+    </div>
+  );
 };
 
 export default Search;
