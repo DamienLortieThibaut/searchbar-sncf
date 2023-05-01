@@ -44,7 +44,7 @@ const DoubleSearchBar = ({ city, uniqueName }: Props) => {
   const handleInputFocus = (inputName: string) => {
     setTimeout(() => {
       setInputFocused(inputName);
-    }, 300);
+    }, 180);
   };
 
   const updateInputMessage = (

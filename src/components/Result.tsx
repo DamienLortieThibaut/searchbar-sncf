@@ -33,11 +33,9 @@ const Result = ({
       queryParam = departureValue;
     } else if (inputFocused === "arrival" && arrivalValue !== "" && arrivalValue !== undefined) {
       queryParam = arrivalValue;
-      console.log("api basique");
       
     } else if (inputFocused === "arrival" && arrivalValue === "" && departureValue !== "") {
       apiUrl = `https://api.comparatrip.eu/cities/popular/from/${cityLink}/5`;
-      console.log("api complexe");
     }
 
     if (queryParam) {

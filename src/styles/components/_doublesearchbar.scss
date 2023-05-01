@@ -12,7 +12,7 @@
       flex-direction: column;
       position: relative;
       max-width: 57%;
-      @media (max-width: 765px) {
+      @media (max-width: 1025px) {
         max-width: 100%;
       }
       .departure {
@@ -44,6 +44,9 @@
           border-color: rgb(18, 121, 150);
           box-shadow: rgb(18, 121, 150) 0px 0px 0px 1px inset;
         }
+        @media (max-width: 385px) {
+          font-size: 0.8rem;
+        }
         label {
           max-height: 2em;
         }
@@ -54,11 +57,17 @@
           line-height: 1.375rem;
           font-size: 1rem;
           padding-left: 0.4rem;
+          @media (max-width: 385px) {
+            font-size: 0.8rem;
+          }
         }
       }
     }
     .result{
       max-width: 57%;
+      @media (max-width: 1025px) {
+        max-width: 100%;
+      }
       ul{
         max-height: 55vh;
       }
