@@ -23,70 +23,12 @@
   }
   .departure {
     padding: 1rem;
-    div {
-      position: relative;
-      background: #fff;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 59rem;
-      margin: 0 auto;
-      overflow: auto;
-      &::-webkit-scrollbar{
-        width: 12px;
-      }
-      &::-webkit-scrollbar-thumb{
-        background: rgb(18, 121, 150);
-        border-radius: 6px;
-      }
-      @media (max-width: 60em) {
-        max-width: calc(100vw - 64px);
-      }
-      ul {
-        position: relative;
-        scrollbar-color: rgb(18, 121, 150);
-        max-height: 70vh;
-        padding-top: 3rem;
-        &::before {
-          content: "Villes, Gares et Stations";
-          font-size: 0.9rem;
-          position: absolute;
-          top: 1.5rem;
-          left: 1.7rem;
-        }
-        li {
-          cursor: pointer;
-          min-height: 1.5rem;
-          display: flex;
-          position: relative;
-          &:hover {
-            background: $grey;
-          }
-          &::before {
-            content: "";
-            background: url(../../assets/img/pngegg.png) center/cover no-repeat;
-            pointer-events: none;
-            top: 8px;
-            left: 10px;
-            width: 25px;
-            height: 25px;
-            position: absolute;
-          }
-          &::after{
-            content: "Ville";
-            pointer-events: none;
-            font-size: 0.8rem;
-            top: 0;
-            left: 3rem;
-            position: absolute;
-          }
-          a {
-            padding: 1rem 3rem;
-            display: block;
-            height: 100%;
-            width: 100%;
-          }
-        }
-      }
+  }
+  .result {
+    max-width: 59rem;
+    margin: 0 auto;
+    ul{
+      max-height: 70vh;
     }
   }
 }

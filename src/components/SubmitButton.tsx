@@ -20,7 +20,7 @@ const SubmitButton = ({ inputMessage }: Props) => {
     }, [inputMessage]);
 
     const selectChoice = () => {
-        if (suggestions[0]) navigate("/search/" + suggestions[0].local_name.match(/^[^,]*/));
+        if (suggestions[0]) navigate("/search/" + suggestions[0].local_name.match(/^[^,]*/) + "/" + suggestions[0].unique_name);
         else navigate("/search"); 
     };
 

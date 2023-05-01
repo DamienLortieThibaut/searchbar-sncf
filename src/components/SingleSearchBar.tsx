@@ -5,8 +5,9 @@ import SubmitButton from "./SubmitButton";
 const SingleSearchBar = () => {
   const scroll = useRef<null | HTMLDivElement>(null);
   const inputMessage = useRef<HTMLInputElement | null>(null);
-  const [inputFocused, setInputFocused] = useState(false);
+  const [inputFocused, setInputFocused] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState("");
+  const [cityLink, setCityLink] = useState<string>("");
 
   useEffect(() => {
     const handleClick = () => {
@@ -25,15 +26,16 @@ const SingleSearchBar = () => {
 
   const handleInputBlur = () => {
     setTimeout(() => {
-      setInputFocused(false);
+      setInputFocused(null);
     }, 300);
   };
 
-  const handleInputFocus = () => setInputFocused(true);
+  const handleInputFocus = () => setInputFocused("departure");
 
-  const updateInputMessage = (suggestion: string) => {
+  const updateInputMessage = (city:string, suggestion: string) => {
     const regex = /^[^,]*/;
     const match = suggestion.match(regex);
+    setCityLink(city);
     setInputValue(match ? match[0] : "");
   };
 
@@ -61,7 +63,9 @@ const SingleSearchBar = () => {
       <div className="departure">
         {inputFocused && (
           <Result
-            inputMessage={inputMessage?.current?.value}
+            inputFocused={inputFocused}
+            cityLink={cityLink}
+            departureValue={inputMessage?.current?.value}
             updateInputMessage={updateInputMessage}
           />
         )}

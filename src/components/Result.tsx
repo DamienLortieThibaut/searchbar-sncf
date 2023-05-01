@@ -4,40 +4,69 @@ import { NavLink } from "react-router-dom";
 import { Suggestion } from "../model";
 
 type Props = {
-  inputMessage: string | undefined;
-  updateInputMessage: (suggestion: string) => void;
+  inputFocused: string | null;
+  departureValue?: string;
+  arrivalValue?: string;
+  cityLink?: string;
+  updateInputMessage: (
+    city: string,
+    suggestion: string,
+    inputName: string
+  ) => void;
 };
 
-const Result = ({ inputMessage, updateInputMessage }: Props) => {
+const Result = ({
+  inputFocused,
+  departureValue,
+  arrivalValue,
+  cityLink,
+  updateInputMessage,
+}: Props) => {
   const [suggestions, setSuggestion] = useState<Suggestion[]>([]);
 
   useEffect(() => {
-    if (inputMessage === "") {
-      axios
-        .get("https://api.comparatrip.eu/cities/popular/5")
-        .then((res) => setSuggestion(res.data));
-    } else {
-      axios
-        .get(
-          "https://api.comparatrip.eu/cities/autocomplete/?q=" + inputMessage
-        )
-        .then((res) => setSuggestion(res.data));
+    let apiUrl = "https://api.comparatrip.eu/cities/popular/5";
+    let queryParam = "";
+
+    
+    if (inputFocused === "departure" && departureValue !== undefined) {
+      queryParam = departureValue;
+    } else if (inputFocused === "arrival" && arrivalValue !== "" && arrivalValue !== undefined) {
+      queryParam = arrivalValue;
+      console.log("api basique");
+      
+    } else if (inputFocused === "arrival" && arrivalValue === "" && departureValue !== "") {
+      apiUrl = `https://api.comparatrip.eu/cities/popular/from/${cityLink}/5`;
+      console.log("api complexe");
     }
-  }, [inputMessage]);
+
+    if (queryParam) {
+      apiUrl = `https://api.comparatrip.eu/cities/autocomplete/?q=${queryParam}`;
+    }
+
+    axios.get(apiUrl).then((res) => setSuggestion(res.data));
+  }, [departureValue, arrivalValue, inputFocused, cityLink]);
 
   return (
-    <div>
+    <div className="result">
       <ul>
-        {suggestions.map((suggestion) => (
-          <li
-            key={suggestion.id}
-            onClick={() => updateInputMessage(suggestion.local_name)}
-          >
-            <NavLink to={"/search/" + suggestion.local_name.match(/^[^,]*/)}>
-              <span>{suggestion.local_name}</span>
-            </NavLink>
-          </li>
-        ))}
+        {inputFocused &&
+          suggestions.map((suggestion) => (
+            <li
+              key={suggestion.id}
+              onClick={() =>
+                updateInputMessage(
+                  suggestion.unique_name,
+                  suggestion.local_name,
+                  inputFocused
+                )
+              }
+            >
+              <NavLink to={"/search/" + suggestion.local_name.match(/^[^,]*/) + "/" + suggestion.unique_name}>
+                <span>{suggestion.local_name}</span>
+              </NavLink>
+            </li>
+          ))}
       </ul>
     </div>
   );
