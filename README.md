@@ -102,7 +102,7 @@ C'est un composant qui est utilisé dans DoubleSearchBar. Il sert à créer les 
 
 | Props | Paramètre | Type | Utilité |
 |-------|-----------|-------|-------|
-|autofocos(facultatif)|      | `boolean` |  Fixe l'autofocus |
+|autofocus(facultatif)|      | `boolean` |  Fixe l'autofocus |
 |label|      | `string` | Renseigne le label |
 |placeholder|      | `string` | Renseigne le placeholder |
 | value|      |`string` | Renseigne la valeur de l'input|
