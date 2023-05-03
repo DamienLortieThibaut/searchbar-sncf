@@ -81,7 +81,7 @@ C'est le composant principal pour la deuxième page.
 |focusInput | input | `React.RefObject<HTMLInputElement>`| Fixe le focus sur l'input passé en paramètre |
 |handleInputBlur |     |     | Mettre à null le state qui écoute le focus sur les inputs à un clic en dehors d'un input|
 | handleInputFocus | inputName | `string` |  Mettre à jour le state qui écoute le focus sur les inputs en lui donnant le nom de l'input |
-|updateInputMessage | city,suggestion,inputName | `string`, `string`, `string``| Met à jour la valeur dans l'input avec le bon format lorsqu'une suggestion est séléctionnée par l'utilisateur | 
+|updateInputMessage | city,suggestion,inputName | `string`, `string`, `string`| Met à jour la valeur dans l'input avec le bon format lorsqu'une suggestion est séléctionnée par l'utilisateur | 
 
 ### Hook		
 | Hook | Utilité |
@@ -109,8 +109,8 @@ C'est un composant qui est utilisé dans DoubleSearchBar. Il sert à créer les 
 | className |      |`string` | Avoir un style différent |
 | onChange | event: `React.ChangeEvent<HTMLInputElement>`|      | Met à jour le state qui gère la valeur de l'input |
 | onClick | event: `React.MouseEvent<HTMLDivElement>`|          | Sélectionne l'input peut importe où l'utilisateur clique dans la div |
-| onBlur |`React.FocusEventHandler<HTMLInputElement> | undefined `|       | Met à jour le state lorsque l'utilisateur clique en dehors de l'input |
-|onFocus | `React.FocusEventHandler<HTMLInputElement> | undefined `|        | Met à jour le state lorsque l'utilisateur clique sur l'input |
+| onBlur |`React.FocusEventHandler<HTMLInputElement> or undefined `|       | Met à jour le state lorsque l'utilisateur clique en dehors de l'input |
+|onFocus | `React.FocusEventHandler<HTMLInputElement> or undefined `|        | Met à jour le state lorsque l'utilisateur clique sur l'input |
 | inputRef | `React.RefObject<HTMLInputElement>`|     | Récupérer les propriétés de l'input |
 
 ## Result
@@ -119,7 +119,7 @@ C'est le composant qui s'occupe de proposer les suggestions à l'utilisateur à 
 ### Props
 | Props | Type | Utilité |
 |--------|-------|--------|
-|inputFocused| `string | null ` | Savoir quel input est focus|
+|inputFocused| `string or null ` | Savoir quel input est focus|
 |departureValue(facultatif)| `string` | Connaitre la valeur que contient l'input pour le départ |
 | arrivalValue(factultatif)| `string` | Connaitre la valeur que contient l'input pour l'arrivée |
 | cityLink(facultatif) | `string` | Avoir au bon format la ville de départ pour la recherche des 5 villes les plus populaires au départ d'une ville donnée |
@@ -160,7 +160,7 @@ C'est le composant qui sert à valider le départ si l'utilisateur ne sélection
 ### Props
 | Nom | Type | Utilité |
 |-------|-------|------|
-|inputmessage | `string | undefined` | Donne la valeur de l'input |
+|inputmessage | `string or undefined` | Donne la valeur de l'input |
 
 ### Fonction 
 | Fonction | Utilité |
