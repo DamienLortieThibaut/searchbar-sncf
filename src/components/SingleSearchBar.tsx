@@ -32,7 +32,7 @@ const SingleSearchBar = () => {
 
   const handleInputFocus = () => setInputFocused("departure");
 
-  const updateInputMessage = (city:string, suggestion: string) => {
+  const updateInputMessage = (city: string, suggestion: string) => {
     const regex = /^[^,]*/;
     const match = suggestion.match(regex);
     setCityLink(city);
@@ -44,7 +44,7 @@ const SingleSearchBar = () => {
   };
 
   return (
-    <div className="form-singlesearchbar">
+    <form className="form-singlesearchbar">
       <div className="singlesearchbar" ref={scroll}>
         <div className="container">
           <input
@@ -70,7 +70,7 @@ const SingleSearchBar = () => {
           />
         )}
       </div>
-    </div>
+    </form>
   );
 };
 

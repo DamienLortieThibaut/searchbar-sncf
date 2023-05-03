@@ -26,8 +26,8 @@ const DoubleSearchBar = ({ city, uniqueName }: Props) => {
 
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    setCityLink(arrivalValue)
     setDepartureValue(arrivalValue);
-    setCityLink(arrivalValue);
     setArrivalValue(departureValue);
     setRotate(rotate + 180);
   };
@@ -38,13 +38,13 @@ const DoubleSearchBar = ({ city, uniqueName }: Props) => {
   const handleInputBlur = () => {
     setTimeout(() => {
       setInputFocused(null);
-    }, 150);
+    }, 250);
   };
 
   const handleInputFocus = (inputName: string) => {
     setTimeout(() => {
       setInputFocused(inputName);
-    }, 180);
+    }, 300);
   };
 
   const updateInputMessage = (

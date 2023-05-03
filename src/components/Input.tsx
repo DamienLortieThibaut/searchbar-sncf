@@ -27,7 +27,7 @@ const Input = ({
 }: Props) => {
   return (
     <div className={"searchbar " + className} onClick={onClick}>
-      <label htmlFor={label}>{label} :</label>
+      <label htmlFor={label} data-testid={label} >{label} :</label>
       <input
         type="search"
         placeholder={placeholder}
