@@ -27,7 +27,6 @@ const Result = ({
   useEffect(() => {
     let apiUrl = "https://api.comparatrip.eu/cities/popular/5";
     let queryParam = "";
-
     if (inputFocused === "departure" && departureValue !== undefined) {
       queryParam = departureValue;
     } else if (
@@ -36,14 +35,7 @@ const Result = ({
       arrivalValue !== undefined
     ) {
       queryParam = arrivalValue;
-    } else if (
-      (inputFocused === "arrival" &&
-        arrivalValue === undefined &&
-        departureValue === undefined) ||
-      (inputFocused === "arrival" &&
-        arrivalValue === "" &&
-        departureValue !== undefined)
-    ) {
+    } else if (cityLink) {
       apiUrl = `https://api.comparatrip.eu/cities/popular/from/${cityLink}/5`;
     }
 
