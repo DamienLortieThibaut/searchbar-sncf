@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Suggestion } from "../model";
 
 type Props = {
@@ -28,13 +28,22 @@ const Result = ({
     let apiUrl = "https://api.comparatrip.eu/cities/popular/5";
     let queryParam = "";
 
-    
     if (inputFocused === "departure" && departureValue !== undefined) {
       queryParam = departureValue;
-    } else if (inputFocused === "arrival" && arrivalValue !== "" && arrivalValue !== undefined) {
+    } else if (
+      inputFocused === "arrival" &&
+      arrivalValue !== "" &&
+      arrivalValue !== undefined
+    ) {
       queryParam = arrivalValue;
-      
-    } else if (inputFocused === "arrival" && arrivalValue === "" && departureValue !== "") {
+    } else if (
+      (inputFocused === "arrival" &&
+        arrivalValue === undefined &&
+        departureValue === undefined) ||
+      (inputFocused === "arrival" &&
+        arrivalValue === "" &&
+        departureValue !== undefined)
+    ) {
       apiUrl = `https://api.comparatrip.eu/cities/popular/from/${cityLink}/5`;
     }
 
@@ -60,9 +69,16 @@ const Result = ({
                 )
               }
             >
-              <NavLink to={"/search/" + suggestion.local_name.match(/^[^,]*/) + "/" + suggestion.unique_name}>
+              <Link
+                to={
+                  "/search/" +
+                  suggestion.local_name.match(/^[^,]*/) +
+                  "/" +
+                  suggestion.unique_name
+                }
+              >
                 <span>{suggestion.local_name}</span>
-              </NavLink>
+              </Link>
             </li>
           ))}
       </ul>
